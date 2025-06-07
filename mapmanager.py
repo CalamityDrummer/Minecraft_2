@@ -20,6 +20,7 @@ class Mapmanager():
         self.color = self.getColor(position[2])
         self.block.setColor(self.color)
         self.block.reparentTo(self.land)
+        self.block.setTage('at', str(pos))
 
     def getColor(self, z):
         if z < len(self.colors):
@@ -47,5 +48,15 @@ class Mapmanager():
                         block = self.addBlock((x, y, z0))
                     x += 1
                 y += 1
+
+    def isEmpty(self, pos):
+        blocks = self.findBlocks(pos)
+        if blocks:
+            return False
+        else:
+            return True
+
+    def findBlocks(self, pos):
+        return self.land.findAllMatches('=at=' + str(pos))
 
 # напиши здесь код создания и управления картой

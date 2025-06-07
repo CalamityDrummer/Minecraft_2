@@ -45,6 +45,7 @@ class Hero():
         base.accept('s-repeat', self.back)
         base.accept('d', self.right)
         base.accept('d-repeat', self.right)
+        base.accept('m', self.changeMode)
         
 
     def turn_right(self):
@@ -124,6 +125,12 @@ class Hero():
     def right(self):
         angle =(self.hero.getH()+270) % 360
         self.move_to(angle)
+
+    def changeMode():
+        if self.mode == True:
+            self.mode = False
+        else:
+            self.mode = True
 
 
 
