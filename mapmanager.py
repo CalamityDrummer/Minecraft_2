@@ -20,7 +20,7 @@ class Mapmanager():
         self.color = self.getColor(position[2])
         self.block.setColor(self.color)
         self.block.reparentTo(self.land)
-        self.block.setTage('at', str(pos))
+        self.block.setTag('at', str(position))
 
     def getColor(self, z):
         if z < len(self.colors):

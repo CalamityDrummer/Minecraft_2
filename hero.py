@@ -126,7 +126,7 @@ class Hero():
         angle =(self.hero.getH()+270) % 360
         self.move_to(angle)
 
-    def changeMode():
+    def changeMode(self):
         if self.mode == True:
             self.mode = False
         else:
