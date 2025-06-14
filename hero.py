@@ -58,7 +58,7 @@ class Hero():
         if self.cameraOn == True:
             self.cameraUp()
         else:
-            self.cameraBind
+            self.cameraBind()
 
     def look_at(self, angle):
         from_x =  round(self.hero.getX())
@@ -102,7 +102,14 @@ class Hero():
         self.hero.setPos(pos)
 
     def try_move(self, angle):
-        pass
+        pos = self.look_at(angle)
+        if self.land.isEmpty(pos):
+            pos = self.land.findHighestEmpty(pos)
+            delf.hero.setPos(pos)
+        else:
+            pos = pos[0], pos[1], pos[2] + 1
+            if self.land.isEmpty(pos):
+                self.hero.setPos(pos)
 
     def move_to(self, angle):
         if self.mode  == True:

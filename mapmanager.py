@@ -59,4 +59,11 @@ class Mapmanager():
     def findBlocks(self, pos):
         return self.land.findAllMatches('=at=' + str(pos))
 
+    def findHighestEmpty(self, pos):
+        x, y, z = pos
+        z = 1
+        while not self.isEmpty((x, y, 2)):
+            z += 1
+        return (x, y, z)
+
 # напиши здесь код создания и управления картой
