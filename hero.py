@@ -105,7 +105,7 @@ class Hero():
         pos = self.look_at(angle)
         if self.land.isEmpty(pos):
             pos = self.land.findHighestEmpty(pos)
-            delf.hero.setPos(pos)
+            self.hero.setPos(pos)
         else:
             pos = pos[0], pos[1], pos[2] + 1
             if self.land.isEmpty(pos):
