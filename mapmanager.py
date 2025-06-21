@@ -62,8 +62,25 @@ class Mapmanager():
     def findHighestEmpty(self, pos):
         x, y, z = pos
         z = 1
-        while not self.isEmpty((x, y, 2)):
+        while not self.isEmpty((x, y, z)):
             z += 1
         return (x, y, z)
 
+    def desBlock(self, pos):
+        blocks = self.findBlocks(pos)
+        for block in blocks:
+            block.removeNode()
+
+    def desBlockFrom(self, pos):
+        x, y, z = self.findHighestEmpty(pos)
+        pos = x, y, z - 1
+        blocks = self.findBlocks(pos)
+        for block in blocks:
+            block.removeNode()
+
+    def buildBlock(self, pos):
+        x, y, z = pos
+        new = self.findHighestEmpty(pos)
+        if new[2] <= z + 1:
+            self.addBlock(pos)
 # напиши здесь код создания и управления картой

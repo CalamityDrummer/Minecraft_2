@@ -46,6 +46,8 @@ class Hero():
         base.accept('d', self.right)
         base.accept('d-repeat', self.right)
         base.accept('m', self.changeMode)
+        base.accept('b', self.build)
+        base.accept('v', self.destroy)
         
 
     def turn_right(self):
@@ -138,6 +140,23 @@ class Hero():
             self.mode = False
         else:
             self.mode = True
+
+    def build(self):
+        angle = self.hero.getH() % 360
+        pos = self.look_at(angle)
+        if self.mode:
+            self.land.addBlock(pos)
+        else:
+            self.land.buildBlock(pos)
+
+    def destroy(self):
+        angle = self.hero.getH() % 360
+        pos = self.look_at(angle)
+        if self.mode:
+            self.land.desBlock(pos)
+        else:
+            self.land.desBlockFrom(pos)
+
 
 
 
