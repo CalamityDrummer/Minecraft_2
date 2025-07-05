@@ -45,7 +45,11 @@ class Hero():
         base.accept('s-repeat', self.back)
         base.accept('d', self.right)
         base.accept('d-repeat', self.right)
-        base.accept('m', self.changeMode)
+        base.accept('r', self.up)
+        base.accept('r-repeat', self.up)
+        base.accept('f', self.down)
+        base.accept('f-repeat', self.down)
+        base.accept('z', self.changeMode)
         base.accept('b', self.build)
         base.accept('v', self.destroy)
         
@@ -93,7 +97,7 @@ class Hero():
         elif angle >= 245 and angle <= 290:
             return -1, 0
 
-        elif angle >= 290 and angle <= 355:
+        elif angle >= 290 and angle <= 335:
             return -1, -1
 
         else:
@@ -135,9 +139,19 @@ class Hero():
         angle =(self.hero.getH()+270) % 360
         self.move_to(angle)
 
+    def up(self):
+        if self.mode == True:
+            self.hero.setZ(self.hero.getZ() + 1)
+
+    def down(self):
+        if self.mode == True:
+            self.hero.setZ(self.hero.getZ() - 1)
+
     def changeMode(self):
         if self.mode == True:
             self.mode = False
+            pos = self.hero.getPos()
+            self.hero.setPos(self.land.isEmpty(pos))
         else:
             self.mode = True
 
